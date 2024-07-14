@@ -1,0 +1,45 @@
+<div class="row">
+
+    <div class="col-md-6 text-center">
+        <table class="table text-center" id="table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Item Name</th>
+                <th>Action</th>
+                <th>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="addOrEditItems(null,null)">
+                    Add Item
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(item of itemList; track item.id; let index =
+              $index){
+              <tr>
+                <td>{{ index+1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-warning btn-sm"
+                    (click)="addOrEditItems(index,item.id)">
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm ms-2"
+                    (click)="removeItems(index)">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>          
+    </div>
+</div>
