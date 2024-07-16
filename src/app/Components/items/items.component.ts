@@ -52,8 +52,10 @@ export class ItemsComponent implements OnInit {
     //     next: (res) => this.updateGrandTotal(),
     //   });
   }
-  removeItems(id: any) {
-    console.log(id);
-    this.itemList.splice(id, 1);
+  removeItems(index: any,ItemId:number) {
+    this.service.delete(ItemId).subscribe({
+      next:(res)=> console.log(`Sucessfully Deleted database:${ItemId} Index no: ${index}`)
+    })
+    this.itemList.splice(index, 1);
   }
 }

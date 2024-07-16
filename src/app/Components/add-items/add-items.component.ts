@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
@@ -43,16 +43,19 @@ import { RouterLink } from '@angular/router';
 export class AddItemsComponent implements OnInit {
 
   constructor(
-    // @Inject(MAT_DIALOG_DATA) public data: any,
-    // public dialogRef:MatDialogRef<AddItemsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef:MatDialogRef<AddItemsComponent>,
     private formBuilder: FormBuilder,
     private service: ItemsService,
   ){}
 
+  
 
-  value = 'Clear me';
   ngOnInit(): void {
-    formData:Items;
+    if(this.data.id>0){
+      this.patchEditdata()
+    }
+    
   }
 
   itemform = this.formBuilder.group({
@@ -60,13 +63,35 @@ export class AddItemsComponent implements OnInit {
   })
 
   save(){
-    console.log(this.itemform.value);
-    const item:Items={
-      ItemId: 0,
-      Name: this.itemform.value.Name!
-    };
-    this.service.create(item).subscribe({
-      next:()=> console.log("Item Created Sucessfully")});
+    console.log(this.data.id+"no Item")
+    if(this.data.id==null){
+      const item:Items={
+        ItemId: 0,
+        Name: this.itemform.value.Name!
+      };
+      this.service.create(item).subscribe({
+        next:()=> console.log("Item Created Sucessfully")}); 
+    } else{
+      const item:Items={
+        ItemId: this.data.id,
+        Name: this.itemform.value.Name!
+      };
+      this.service.update(item).subscribe({
+        next:()=> console.log("Item Updated Sucessfully")});
+    }
+  }
+
+  
+  patchEditdata(){
+    this.service.get(this.data.id).subscribe({
+      next:(res)=> {this.itemform.patchValue(res);
+        console.log(res)
+      }
+    })
+  }
+
+  update(){
+
   }
 
   //multiple Insert
