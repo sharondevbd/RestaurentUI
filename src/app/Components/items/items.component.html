@@ -3,41 +3,30 @@
   <table class="table text-center" id="table">
     <thead>
       <tr>
-                <th>No.</th>
-                <th>Item Name</th>
-                <th>Action</th>
-                <th>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    (click)="addOrEditItems(null,null)">
-                    Add Item
-                  </button>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              @for(item of itemList; track item.id; let index =
-              $index){
-              <tr>
-                <td>{{ index+1 }}</td>
-                <td>{{ item.Name }}</td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-warning btn-sm"
-                    (click)="addOrEditItems(index,item.ItemId)">
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger btn-sm ms-2"
-                    (click)="removeItems(index,item.ItemId)">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-              }
-            </tbody>
-  </table>          
+        <th>No.</th>
+        <th>Item Name</th>
+        <th>
+          <button type="button" class="btn btn-primary" (click)="addOrEditItems(null,null)">
+            <i class="fa-solid fa-plus"></i> Add Item </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of itemList; track item.id; let index =
+      $index){
+      <tr>
+        <td>{{ index+1 }}</td>
+        <td>{{ item.Name }}</td>
+        <td>
+          <button type="button" class="btn btn-warning btn-sm" (click)="addOrEditItems(index,item.ItemId)">
+            <i class="fa-solid fa-pen-to-square"></i> Edit
+          </button>
+          <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeItems(index,item.ItemId)">
+            <i class="fa-solid fa-trash"></i> Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

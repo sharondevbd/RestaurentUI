@@ -1,20 +1,20 @@
 <div>
   <h2 mat-dialog-title>Raw Item Form</h2>
-<form [formGroup]="itemform" (ngSubmit)="save()">
+  <form [formGroup]="itemform" (ngSubmit)="save()">
 
     <mat-dialog-content>
-    <mat-form-field>
-      <mat-label>Item Name</mat-label>
-      <input matInput type="text" placeholder="type here" formControlName="Name">
-    </mat-form-field>
-  </mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Item Name</mat-label>
+        <input matInput type="text" placeholder="type here" formControlName="Name">
+      </mat-form-field>
+    </mat-dialog-content>
 
     <mat-dialog-actions>
 
-      <button mat-button [disabled]="!itemform.valid">Save</button>
-      <button mat-button [mat-dialog-close] cdkFocusInitial>Close</button>
+      <button mat-button [disabled]="!itemform.valid"> <i class="fa-solid fa-database"></i> Save</button>
+      <button mat-button [mat-dialog-close] cdkFocusInitial><i class="fa-solid fa-xmark"></i> Close</button>
     </mat-dialog-actions>
-    
+
   </form>
 </div>
 
