@@ -7,9 +7,11 @@ import {
   MatDialogModule,
 } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AddItemsComponent } from '../add-items/add-items.component';
 import { DialogConfig } from '@angular/cdk/dialog';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-items',
   standalone: true,
@@ -21,9 +23,9 @@ import { DialogConfig } from '@angular/cdk/dialog';
 export class ItemsComponent implements OnInit {
 
   constructor(private service:ItemsService, 
-    private dialog:MatDialog,
+    private dialog:MatDialog, private router:Router, private notify:ToastrService
   ){  }
-
+ 
   item:Items[]=[];
   itemList:any=[
     {"ItemId":0, "Name":"No Item Found From API"},
@@ -36,6 +38,7 @@ export class ItemsComponent implements OnInit {
     this.service.getAll().subscribe({
       next:(data)=>{
           this.itemList=data;
+          // this.notify.info("Items Page Loaded !")
         }})}
 
   // itemList:any=[];
@@ -46,7 +49,9 @@ export class ItemsComponent implements OnInit {
     // dialogConfig.width="30%";
     dialogConfig.data = {itemIndex, id}
     this.dialog.open(AddItemsComponent, dialogConfig)
-    .afterClosed()
+    .afterClosed().subscribe({
+      next:()=> this.ngOnInit()
+    })
     // let orderId = this.orderForm.value.orderId;
     //   .subscribe({
     //     next: (res) => this.updateGrandTotal(),
@@ -54,8 +59,13 @@ export class ItemsComponent implements OnInit {
   }
   removeItems(index: any,ItemId:number) {
     this.service.delete(ItemId).subscribe({
-      next:(res)=> console.log(`Sucessfully Deleted database:${ItemId} Index no: ${index}`)
+      next:(res)=>{
+        console.log(`Sucessfully Deleted database:${ItemId} Index no: ${index}`);
+        this.notify.error(`Sucessfully Deleted database:${ItemId} Index no: ${index}`)
+        
+      }
     })
+    
     this.itemList.splice(index, 1);
   }
 }

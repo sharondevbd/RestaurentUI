@@ -1,0 +1,21 @@
+This Documents Shows The Structure Of This Project
+It Also Helps to Visual Knowledge of Business models and Services.
+Thanks For Reading This Project Structure. -Sharon, IsDB-58, Roll 1281042
+
+Working and Pending Notes:
+item [CRUD Done]
+Recipe MasterDetils Running
+
+pending service If needs:
+ng g service services/RecipeItem --skip-tests
+
+
+Models:
+-Item
+--Recipe (parent of RecipeItem)
+---RecipeItem (Child)
+----DailyMenus (Parent Of Recipe) //One Of The Main Part
+-----Requisitions (A relative & Logical Table Needs VM to Assist)
+-----SaleDetails (child Of Sale Header)
+------SaleHeader (Parent)
+-------Login Model

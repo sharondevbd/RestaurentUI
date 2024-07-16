@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
@@ -16,7 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouteConfigLoadStart, Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-items',
@@ -43,13 +44,15 @@ import { RouterLink } from '@angular/router';
 export class AddItemsComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef:MatDialogRef<AddItemsComponent>,
+    
     private formBuilder: FormBuilder,
     private service: ItemsService,
+    private router:Router,
+    private notify:ToastrService
   ){}
-
   
+  dialogRef= inject(MatDialogRef<AddItemsComponent>)
+  data=inject(MAT_DIALOG_DATA)
 
   ngOnInit(): void {
     if(this.data.id>0){
@@ -70,14 +73,20 @@ export class AddItemsComponent implements OnInit {
         Name: this.itemform.value.Name!
       };
       this.service.create(item).subscribe({
-        next:()=> console.log("Item Created Sucessfully")}); 
+        next:()=> {
+          this.notify.success("Item Created Sucessfully");
+          this.dialogRef.close();
+          // this.router.navigateByUrl("/items")
+        }}); 
     } else{
       const item:Items={
         ItemId: this.data.id,
         Name: this.itemform.value.Name!
       };
       this.service.update(item).subscribe({
-        next:()=> console.log("Item Updated Sucessfully")});
+      next:()=> {this.notify.warning("Item Updated Sucessfully");
+        this.dialogRef.close();
+      }});
     }
   }
 
@@ -90,9 +99,7 @@ export class AddItemsComponent implements OnInit {
     })
   }
 
-  update(){
-
-  }
+ 
 
   //multiple Insert
   // saveOrUpdateMaster(){
