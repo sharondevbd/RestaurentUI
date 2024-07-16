@@ -1,6 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
 import { Items } from '../../models/items.model';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ItemsService } from '../../services/items.service';
@@ -13,9 +21,20 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-add-items',
   standalone: true,
-  imports: [FormsModule,MatAutocompleteModule, MatFormFieldModule,MatInputModule,
-    MatIconModule, MatButtonModule,ReactiveFormsModule,RouterLink, MatDialogClose
+  imports: [MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+    MatIconModule,RouterLink
   ],
+
+
 
   //MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule
   templateUrl: './add-items.component.html',

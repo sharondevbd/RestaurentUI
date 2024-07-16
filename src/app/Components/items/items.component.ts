@@ -43,7 +43,7 @@ export class ItemsComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = false;
-    dialogConfig.width="50%";
+    // dialogConfig.width="30%";
     dialogConfig.data = {itemIndex, id}
     this.dialog.open(AddItemsComponent, dialogConfig)
     .afterClosed()

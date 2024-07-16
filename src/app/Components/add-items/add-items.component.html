@@ -1,18 +1,19 @@
 <div>
-  <h4>Raw Item Form</h4>
+  <h2 mat-dialog-title>Raw Item Form</h2>
 <form [formGroup]="itemform" (ngSubmit)="save()">
-  <div class="form-field flex flex-wrap">
-    <mat-form-field class="form-field">
-      <mat-label>Item Name</mat-label>
-      <input matInput type="text" placeholder="Item Name Here" formControlName="Name">
-    </mat-form-field>
-  </div>
-  <div class="flex justify-center">
-    <button routerLink="/items" mat-raised-button color="primary" [disabled]="!itemform.valid">Save</button>
-    <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]>Close</button>
 
+    <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Item Name</mat-label>
+      <input matInput type="text" placeholder="type here" formControlName="Name">
+    </mat-form-field>
+  </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button mat-button [disabled]="!itemform.valid">Save</button>
+      <button mat-button [mat-dialog-close] cdkFocusInitial>Close</button>
+    </mat-dialog-actions>
     
-  </div>
   </form>
 </div>
 

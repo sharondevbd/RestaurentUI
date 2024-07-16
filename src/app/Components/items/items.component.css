@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  table {
+    margin: 0 auto;
+    border-collapse: collapse; /* Optional for styling */
+  }
+
+  /* .mat-dialog-container {
+    border-radius: 100px !important;
+  } */
