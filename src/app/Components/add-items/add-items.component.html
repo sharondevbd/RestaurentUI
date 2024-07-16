@@ -1,7 +1,36 @@
-<h4 class="display-4">Raw Items</h4>
+<div>
+  <h4>Raw Item Form</h4>
+<form [formGroup]="itemform" (ngSubmit)="save()">
+  <div class="form-field flex flex-wrap">
+    <mat-form-field class="form-field">
+      <mat-label>Item Name</mat-label>
+      <input matInput type="text" placeholder="Item Name Here" formControlName="Name">
+    </mat-form-field>
+  </div>
+  <div class="flex justify-center">
+    <button routerLink="/items" mat-raised-button color="primary" [disabled]="!itemform.valid">Save</button>
+    <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]>Close</button>
+
+    
+  </div>
+  </form>
+</div>
+
+
+<!-- <h4 class="display-4">Raw Items Form</h4>
 <hr>
 <form #form="ngForm" autocomplete="off">
     <div class="form-group">
         <label>Raw Material Item</label>
+        <mat-form-field>
+            <mat-label>Input</mat-label>
+            <input matInput formControl="">
+          </mat-form-field>
     </div>
-</form>
+    <button
+    type="button"
+    class="btn btn-danger btn-sm ms-2"
+    (click)="closeModal()">
+    Delete
+  </button>
+</form> -->

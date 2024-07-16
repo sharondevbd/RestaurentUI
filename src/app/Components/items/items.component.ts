@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Items } from '../../models/items.model';
 import { ItemsService } from '../../services/items.service';
 import {
@@ -18,23 +18,31 @@ import { DialogConfig } from '@angular/cdk/dialog';
   styleUrl: './items.component.css'
   
 })
-export class ItemsComponent {
+export class ItemsComponent implements OnInit {
 
   constructor(private service:ItemsService, 
     private dialog:MatDialog,
-  ){
-
-  }
+  ){  }
 
   item:Items[]=[];
   itemList:any=[
-    {"id":0, "name":"Item Will Be here"},
+    {"ItemId":0, "Name":"No Item Found From API"},
   ];
+  ngOnInit(): void {
+    this.getitemlistfromapi();
+  }
+
+  getitemlistfromapi(){
+    this.service.getAll().subscribe({
+      next:(data)=>{
+          this.itemList=data;
+        }})}
+
   // itemList:any=[];
   addOrEditItems(itemIndex: any, id:any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.width="50%";
     dialogConfig.data = {itemIndex, id}
     this.dialog.open(AddItemsComponent, dialogConfig)
