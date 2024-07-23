@@ -1,0 +1,11 @@
+#table{
+    table-layout: auto;
+    text-align: center;
+    align-items: center;
+}
+
+#itemTable{
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}

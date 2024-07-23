@@ -1,0 +1,28 @@
+<div class="p-4">
+    <h3 class="text-center"> Add Or Edit Items</h3>
+  <hr />
+<form #form="ngForm" autocomplete="off" [formGroup]="recipeItemsForm" (ngSubmit)="save()">
+
+    <div class="row form-group">
+        <div class="form-control col-md-6">
+
+        <label for="">Select Item</label>
+        <select name="ItemId" formControlName="ItemId" class="form-control">
+        <option disabled value="0">--Select an Item--</option>
+        <option *ngFor="let item of itemList; track $index" value="{{item.ItemId}}">{{item.Name}}</option>
+        </select>
+
+        <label for="Quantity">Quantity</label>
+        <input class="form-control" type="number" min="1.00" name="Quantity" formControlName="Quantity" placeholder="QTY">
+
+        <label for="Unit">Unit Name</label>
+        <input class="form-control" type="text" name="Unit" formControlName="Unit" placeholder="Unit Name">
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+            <button type="button" class="btn btn-outline-dark ms-2" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+        </div>
+    </div>
+</form>
+</div>

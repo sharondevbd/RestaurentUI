@@ -5,16 +5,18 @@
     </a>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+      <li><a href="/login" class="nav-link px-2 link-secondary">Home</a></li>
       <li><a href="/items" class="nav-link px-2 link-dark">Items</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+      <li><a href="/recipe" class="nav-link px-2 link-dark">Recipe</a></li>
+      <li><a href="/dailymenu" class="nav-link px-2 link-dark">Daily Menu</a></li>
       <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
     </ul>
 
     <div class="col-md-3 text-end">
-      <a [routerLink]="[ '/login']"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
-      <button type="button" class="btn btn-primary">Sign-up</button>
+      <a [routerLink]="['/login']"><button type="button" class="btn btn-outline-primary me-2">
+        <i class="fa-solid fa-user"></i> Login</button></a>
+      <button type="button" class="btn btn-primary">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign-up</button>
     </div>
   </header>
 </div>

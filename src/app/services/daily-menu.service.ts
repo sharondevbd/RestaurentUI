@@ -1,42 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DailyMenu } from '../models/daily-menu.model';
 import { Observable } from 'rxjs';
 import { Recipe } from '../models/recipe.model';
-import { RecipeItem } from '../models/recipe-item.model';
-
-const baseUrl="https://localhost:7176/api/Recipes";
+const baseUrl="https://localhost:7176/api/DailyMenu";
 @Injectable({
   providedIn: 'root'
 })
-export class RecipeService {
+export class DailyMenuService {
 
-//get, Post, getbyid, update, Delete
-// formData:any=[];
-RecipeItems:RecipeItem[]=[];
-
-
-
-constructor(private http:HttpClient) { }
-// saveOrUpdateMaster(){
-//   const body={
-//     ...this.formData,
-//     RecipeItems:this.RecipeItems
-//   }
-//   console.log(body);
-//   return this.http.post(baseUrl,body);
-// }
-
-
-getAll(): Observable<Recipe[]> {
-  return this.http.get<Recipe[]>(baseUrl);
+  constructor(private http:HttpClient) { }
+  RecipeItems=[];
+  
+getAll(): Observable<DailyMenu[]> {
+  return this.http.get<DailyMenu[]>(baseUrl);
 }
 getrecipeTable():Observable<any>{
   return this.http.get(`${baseUrl}/getrecipeTable`)
 }
-get(id: any): Observable<Recipe> {
-  return this.http.get<Recipe>(`${baseUrl}/${id}`);
+get(id: any): Observable<DailyMenu> {
+  return this.http.get<DailyMenu>(`${baseUrl}/${id}`);
 }
-create(data: Recipe): Observable<any> {
+create(data: DailyMenu): Observable<any> {
   const obj ={
     ...data,
     RecipeItems:this.RecipeItems

@@ -4,8 +4,8 @@ export class Recipe {
 
     RecipeId: number=0;
     RecipeName:string= "";
-    DailyMenus: []=[];
-    RecipeItems:RecipeItem[]=[];
+    // DailyMenus: []=[];
+    // RecipeItems:RecipeItem[]=[];
 }
 
 // {

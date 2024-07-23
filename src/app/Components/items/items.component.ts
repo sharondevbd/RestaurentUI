@@ -8,7 +8,7 @@ import {
 } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AddItemsComponent } from '../add-items/add-items.component';
+import { AddItemsComponent } from './add-items/add-items.component';
 import { DialogConfig } from '@angular/cdk/dialog';
 import { ToastrService } from 'ngx-toastr';
 

@@ -1,0 +1,48 @@
+<div class="p-4">
+    <h3 class="text-center font-bold"> Hello Mr. Manager!</h3>
+    <h2 class="text-center"> What's You Have For Today's Menu? </h2>
+<hr />
+
+<div class="container">
+
+    <label>Select A Date To Filter</label>
+
+    <table class="table text-center" id="table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Recipe Names</th>
+          <th>Price</th>
+          <th>Demand Quantity</th>
+          <th>Cooked Quantity</th>
+          <th>Serving Quantity</th>
+          <th>
+            <button type="button" class="btn btn-primary" (click)="addOrEditItems(null,null)"> <i class="fa-solid fa-plus"></i> Add Item </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of dailyMenu; track item.DailyMenuId; let index =
+        $index){
+        <tr>
+          <td>{{index+1}}</td>
+          <td>{{ item.RecipeId+"Pasta"}}</td>
+          <td>{{ item.Price}}</td>
+          <td>{{ item.DemandQuantity}}</td>
+          <td>{{item.CookedQuantity||0}}</td>
+          <td>{{item.ServingQuantity||0}}</td>
+          <td>
+            <button type="button" class="btn btn-warning btn-sm" (click)="addOrEditItems(index,item.ItemId)">
+              <i class="fa-solid fa-pen-to-square"></i> Edit
+            </button>
+            <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeItems(index,item.ItemId)">
+              <i class="fa-solid fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+</div>

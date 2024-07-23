@@ -9,9 +9,9 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { Items } from '../../models/items.model';
+import { Items } from '../../../models/items.model';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { ItemsService } from '../../services/items.service';
+import { ItemsService } from '../../../services/items.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
