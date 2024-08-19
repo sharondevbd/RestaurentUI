@@ -3,11 +3,12 @@ import { Component} from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DailyMenuService } from '../../services/daily-menu.service';
 import { RecipeService } from '../../services/recipe.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-daily-menu',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './daily-menu.component.html',
   styleUrl: './daily-menu.component.css'
 })
@@ -16,6 +17,7 @@ removeItems(_t24: number,arg1: any) {
 throw new Error('Method not implemented.');
 }
 addOrEditItems(arg0: any,arg1: null) {
+  
 throw new Error('Method not implemented.');
 }
 

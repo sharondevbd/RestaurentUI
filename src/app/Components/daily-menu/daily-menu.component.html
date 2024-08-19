@@ -17,7 +17,10 @@
           <th>Cooked Quantity</th>
           <th>Serving Quantity</th>
           <th>
-            <button type="button" class="btn btn-primary" (click)="addOrEditItems(null,null)"> <i class="fa-solid fa-plus"></i> Add Item </button>
+            <a [routerLink]="['/todayMenuForm']"><button type="button" class="btn btn-primary me-2">
+              <i class="fa-solid fa-plus"></i> Add New Daily Menu</button></a>
+
+            <button type="button" class="btn btn-primary" (click)="addOrEditItems(null,null)"> <i class="fa-solid fa-plus"></i> Add New Daily Menu </button>
           </th>
         </tr>
       </thead>

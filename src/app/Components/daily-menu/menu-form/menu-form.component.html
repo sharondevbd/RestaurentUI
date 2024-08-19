@@ -1,0 +1,84 @@
+<p>menu-form works!</p>
+
+<div class="jumbotron jumbotron-fluid">
+    <h3 class="display-4 text-center"> HI Manager! Todays' Menu Table?</h3>
+    <hr>
+  
+    <div class="container">
+          <!-- Form Design Goes Here -->
+    <form autocomplete="off" [formGroup]="formData" (ngSubmit)="save()"> 
+      <div class="row form-group text-center">
+      <div class="form-control col-md-6">
+  
+          <label for="RecipeName" >Today Is: </label>
+          <!-- <input class="form-control" formControlName="DailyMenuDate"> -->
+         
+        <!-- Raw Items Table -->
+         <table class="table table-borderless">
+          <thead class="">
+            <tr>
+            <th>Recipe Name</th>
+            <th>Demand Qty (Pcs)</th>
+            <th>Price ৳</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!-- @for(item of DailyMenuForm; track item.DailyMenuId; let index= $index){ -->
+                <td>
+                    <select formControlName="RecipeId">
+                        <option value="0">Select A Recipe</option>
+                        <option *ngFor="let option of recipeNames" [value]='option.RecipeId'>
+                        {{option.RecipeName}}</option>
+                    </select>
+                </td>
+                <td><input type="number" formControlName="DemandQuantity"> Pcs </td>
+                <td><input type="number" formControlName="Price"> ৳ </td>
+                <!-- <input type="text" name="whatever" value="{{model.Price.toFixed(2)}} For Double Prob-->
+                <td>
+                    <button type="button" class="btn btn-info btn-sm ms-2" (click)="addOrEditItems(null,null)"> + Add Recipe </button>
+                </td>
+            </tr>
+          </tbody>
+         </table>
+         
+        <!-- added menu Table -->
+         <div class="row form-group text-center">
+            <table class="table table-info">
+              <thead class="">
+                <tr>
+                  <th>No</th>
+                <th>Recipe Name</th>
+                <th>Demand Qty (Pcs)</th>
+                <th>Price ৳</th>
+                <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for(item of DailyMenuForm; track item.DailyMenuId; let index= $index){
+                <tr>
+                  <td>{{index+1}}</td>
+                  <td>{{item.RecipeId}}</td>
+                  <td>{{item.DemandQuantity}}</td>
+                  <td>{{item.Price}}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeItems(index,null)"><i class="fa-solid fa-trash"></i> Delete </button>
+                  </td>
+                </tr>
+              }
+              </tbody>
+          </table>
+         </div>
+
+        <div>
+        <button type="submit" class="btn btn-dark">Save</button>  
+        <button type="button" class="btn btn-secondary ms-2" (click)="closeFormMode()" >
+         Back </button>
+        </div>
+  
+      </div>
+      </div>
+    </form>
+    </div>
+  </div>

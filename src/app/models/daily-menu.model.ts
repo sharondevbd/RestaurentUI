@@ -5,6 +5,6 @@ export class DailyMenu {
     DemandQuantity:number=0;
     CookedQuantity: number=0;
     ServingQuantity: number=0;
-    Price: any=0.00;
+    Price: number=0.00;
     RecipeId: number=0;         
 }
